@@ -1,8 +1,18 @@
+#include <cstring>
 #include "rshell.h"
 
 using namespace std;
 
-int main()
+rshell::rshell(string &a)
 {
-	return 0;
-};
+	cmd = a;
+}
+
+void rshell::run() 
+{
+	while(true)
+	{
+		cin << cmd;
+	}
+
+}
