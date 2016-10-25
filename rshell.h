@@ -8,6 +8,9 @@ class rshell
 	protected:
 		string cmd;
 	public:
+		rshell() { }
+		rshell(string &);
+		void run();
 		void exit();
 		virtual void print();
 };
