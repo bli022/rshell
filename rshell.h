@@ -1,5 +1,6 @@
 #ifndef __RSHELL_H__
 #define __RSHELL_H__
+#include <iostream>
 
 using namespace std;
 
@@ -15,3 +16,4 @@ class rshell
 		void exit();
 		virtual void print();
 };
+#endif
