@@ -3,11 +3,6 @@
 
 using namespace std;
 
-rshell::rshell(string &a)
-{
-	cmd = a;
-}
-
 void rshell::run() 
 {
 	while(true)
@@ -15,4 +10,13 @@ void rshell::run()
 		cin << cmd;
 	}
 
+}
+
+void rshell::exit()
+{
+	if (cmd == "exit")
+	{
+		if_exit = true;
+		exit(0);
+	}
 }

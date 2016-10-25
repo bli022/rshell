@@ -7,9 +7,10 @@ class rshell
 {
 	protected:
 		string cmd;
+		bool if_exit = false;
 	public:
 		rshell() { }
-		rshell(string &);
+		//rshell(string &);
 		void run();
 		void exit();
 		virtual void print();
