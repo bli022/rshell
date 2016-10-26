@@ -1,29 +1,39 @@
 #include <cstring>
+#include <cstdlib>
 #include "rshell.h"
 
 using namespace std;
 
 void rshell::run() 
 {
-	while(!exit())
+	if (quit() == true)
 	{
-		char cmd_str[];
-		getline(cin, cmd_str 
+		exit(0);
+	}
+
+
+	while(quit() == false)
+	{
+		getline(cin, cmd);
+		char *cmd_arr = new char[cmd.size()];
+ 
 		char connector[] = "&&, ;, ||";
-		char* cmd = strtok(cmd_str, connector);
-		while (cmd != NULL) 
+		char* token = strtok(cmd_arr, connector);
+		while (token != NULL) 
 		{
-			cmd = strtok(NULL, connector);
+			token = strtok(NULL, connector);
 		}
 	}
 
 }
 
-void rshell::exit()
+bool rshell::quit()
 {
-	if (cmd == "exit")
+	is_exit = false;
+	if (cmd.compare("exit"))
 	{
-		if_exit = true;
-		exit(0);
+		is_exit = true;
+		return is_exit;
 	}
+	return is_exit;
 }
