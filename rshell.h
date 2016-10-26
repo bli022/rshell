@@ -9,12 +9,11 @@ class rshell
 {
 	protected:
 		string cmd;
-		bool if_exit = false;
+		bool is_exit;
 	public:
 		rshell() { }
-		//rshell(string &);
 		void run();
-		void exit();
+		bool quit();
 		virtual void print() = 0;
 };
 
