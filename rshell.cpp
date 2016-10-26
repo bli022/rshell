@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstring>
 #include <cstdlib>
 #include "rshell.h"
@@ -8,7 +9,7 @@ void rshell::run()
 {
 	if (quit() == true)
 	{
-		exit(0);
+		cout << "typed quit";
 	}
 
 
@@ -30,7 +31,8 @@ void rshell::run()
 bool rshell::quit()
 {
 	is_exit = false;
-	if (cmd.compare("exit"))
+	string quit = "exit";
+	if (cmd.compare(quit) == 0)
 	{
 		is_exit = true;
 		return is_exit;
