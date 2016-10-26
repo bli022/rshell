@@ -9,7 +9,7 @@ void rshell::run()
 {
 	if (quit() == true)
 	{
-		cout << "typed quit";
+		exit(0);
 	}
 
 
