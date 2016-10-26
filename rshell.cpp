@@ -5,9 +5,16 @@ using namespace std;
 
 void rshell::run() 
 {
-	while(true)
+	while(!exit())
 	{
-		cin << cmd;
+		char cmd_str[];
+		getline(cin, cmd_str 
+		char connector[] = "&&, ;, ||";
+		char* cmd = strtok(cmd_str, connector);
+		while (cmd != NULL) 
+		{
+			cmd = strtok(NULL, connector);
+		}
 	}
 
 }
