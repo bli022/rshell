@@ -17,10 +17,12 @@ OBJECTS=$(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@ $^
+	$(CC) $(OBJECTS) -o $(TARGET)
 
-$(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	mkdir -p $(OBJDIR)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
 	rm -f $(TARGET) $(OBJECTS)
+	rm -rf $(OBJDIR)
