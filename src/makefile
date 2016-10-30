@@ -1,17 +1,26 @@
+#Compiler
 CC=g++
-CC_FLAGS=-Wall -Werror -ansi -pedantic
-EXEC=rshell
-SOURCES=$(wildcard *.cpp)
-OBJECTS=$(SOURCES:.cpp=.o)
-LDFLAGS=
+CFLAGS= -Wall -Werror -ansi -pedantic
 
-all: $(SOURCES) $(EXEC)
+#Name of executable
+TARGET=rshell
 
-$(EXEC): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(EXEC)
+#Source and object dir
+OBJDIR=bin
+SRCDIR=src
 
-%.o: %.cpp
-	$(CC) -c $(CC_FLAGS) $
+#Files and directories
+SOURCES=$(wildcard $(SRCDIR)/*.cpp)
+OBJECTS=$(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+
+#Targets
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@ $^
+
+$(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(EXEC) $(OBJECTS)
+	rm -f $(TARGET) $(OBJECTS)
