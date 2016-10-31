@@ -5,10 +5,10 @@
 
 using namespace std;
 
-class rshell
+class Rshell
 {
 	public:
-		rshell() { }
+		Rshell() { }
 		virtual void print() = 0;
 };
 
