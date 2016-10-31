@@ -6,6 +6,9 @@
 #include <stdio.h>
 
 #include "rshell.h"
+#include "and.h"
+#include "semi.h"
+#include "or.h"
 
 using namespace std;
 
@@ -37,6 +40,8 @@ int main()
 			while (token != NULL) 
 			{
 				printf(" %s\n", token);
+				int found = find(token, token + 2, '&');
+				if (found) { cout << "found &&" << endl;}
 				token = strtok(NULL, d);
 			}
 		}
