@@ -9,6 +9,8 @@
 #include "and.h"
 #include "semi.h"
 #include "or.h"
+#include "cmd.h"
+
 
 using namespace std;
 
@@ -39,9 +41,11 @@ int main()
 			//loop until end of token
 			while (token != NULL) 
 			{
+				cmd *cmd = new cmd(token);
+				//FIX ME: call && || and ; respectively when found
 				printf(" %s\n", token);
-				int found = find(token, token + 2, '&');
-				if (found) { cout << "found &&" << endl;}
+				//int found = find(token, token + 2, '&');
+				//if (found) { cout << "found &&" << endl;}
 				token = strtok(NULL, d);
 			}
 		}

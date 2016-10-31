@@ -7,8 +7,6 @@ using namespace std;
 
 class rshell
 {
-	protected:
-		string cmd;
 	public:
 		rshell() { }
 		virtual void print() = 0;
