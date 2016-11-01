@@ -41,6 +41,7 @@ int main()
 			//loop until end of token
 			while (token != NULL) 
 			{
+				//trying stuff
 				Cmd *command = new Cmd(token);
 				command->exec();
 				//FIX ME: call && || and ; respectively when found
