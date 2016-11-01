@@ -52,7 +52,7 @@ int main()
 //	size_t  pos;
 
 	//keeps looping until user types in keyword: exit	
-	do	
+	while (run)	
 	{
 		cout << "$ ";
 		getline(cin, user_input);
@@ -73,7 +73,7 @@ int main()
 //			parse_args(user_input, cmd_arr);
 	//	}
 
-	} while(run);
+	}
 	
 
 	return 0;
