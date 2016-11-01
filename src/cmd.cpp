@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void Cmd::print()
+void Cmd::exec()
 {
 	pid_t pid = fork();
 	int status;	
