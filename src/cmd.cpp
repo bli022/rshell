@@ -11,14 +11,16 @@ using namespace std;
 void Cmd::print()
 {
 	pid_t pid = fork();
-		
+	int status;	
+
+	
 	//child	
 	if (pid == 0)
 	{
 		//FIXME:: execvp parameter types dont match
-		if (execvp(cmd[0], cmd) < 0) 
+		if (/*execvp(cmd[0], cmd) < 0*/) 
 		{
-			perror("*** ERROR: Failed when trying to execute command \n");
+			perror("*** ERROR: Failed when trying to execute command in child. \n");
 		}
 	}
 
@@ -27,13 +29,23 @@ void Cmd::print()
 	else if (pid > 0)
 	{
 		//wait
-		wait(0);
+		while (waitpid(pid, &status, 0) != pid) 
+		{
+			if (pid == 0) {
+				return;
+			}
+
+			else if (pid == -1) 
+			{
+				perror("*** ERRROR: Failed when trying to execute. \n");
+			}
+		}
 	}
 
 	//fork() failed
 	else 
 	{
-		perror("Error: Couldn't execute command \n");
+		perror("Error: Couldn't execute command because fork() failed. \n");
 		return;
 	}
 }
