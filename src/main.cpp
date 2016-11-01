@@ -14,6 +14,35 @@
 
 using namespace std;
 
+
+void parse_arg(string &allArg, char * args[]){
+    stringstream ss(allArg);
+    char par_arg[BUFSIZ];
+    while(ss >> par_arg){
+        
+        if(par_arg[0] == '<')
+            iRedir = true;
+        if(par_arg[0] == '>')
+            oRedir = true;
+        if(par_arg[0] == '|')
+            ifPipe = true;
+        if(par_arg[0] == '&')
+            backgorund = true;
+            continue;
+        
+        char * cur_par = new char[BUFSIZ];
+
+        unsigned i = 0;
+        for(i = 0; par_arg[i] != '\0'; ++i){
+            cur_par[i] = par_arg[i];
+        }
+        cur_par[i] = '\0';
+        *args++ = cur_par;
+    }
+    *args = 0;
+    
+}
+
 int main() 
 {
 	string user_input;
@@ -41,9 +70,14 @@ int main()
 			//loop until end of token
 			while (token != NULL) 
 			{
+<<<<<<< Updated upstream
 				//trying stuff
 				Cmd *command = new Cmd(token);
 				command->exec();
+=======
+				//Cmd *command = new Cmd(token);
+				//command->print();
+>>>>>>> Stashed changes
 				//FIX ME: call && || and ; respectively when found
 				printf(" %s\n", token);
 				//int found = find(token, token + 2, '&');
