@@ -3,7 +3,7 @@ CC=g++
 CFLAGS= -Wall -Werror -ansi -pedantic
 
 #Name of executable
-TARGET=rshell
+TARGET=./bin/rshell
 
 #Source and object dir
 OBJDIR=bin

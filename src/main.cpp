@@ -13,7 +13,7 @@
 
 
 using namespace std;
-
+/*
 
 void parse_arg(string &allArg, char * args[]){
     stringstream ss(allArg);
@@ -42,58 +42,38 @@ void parse_arg(string &allArg, char * args[]){
     *args = 0;
     
 }
-
+*/
 int main() 
 {
 	string user_input;
 	string quit = "exit";
-	
-	do
+	//char *cmd_arr[500];
+	bool run = true;
+//	size_t  pos;
+
+	//keeps looping until user types in keyword: exit	
+	do	
 	{
 		cout << "$ ";
 		getline(cin, user_input);
-
-		if (user_input.compare(quit) != 0)
-		{
-			//check for a comment in the string
-			size_t pos = user_input.find('#');
-			user_input = user_input.substr(0, pos - 0);
-	
-			//convert user_input to a character array
-			char *cmd_arr = new char[user_input.length() + 1];
-			copy(user_input.begin(), user_input.end(), cmd_arr);
-			cmd_arr[user_input.size()] = '\0';
-			//delimiters for strtok function
-			const char d[4] = "&;|";
-			char *token = strtok(cmd_arr, d);
 		
-			//loop until end of token
-			while (token != NULL) 
-			{
-<<<<<<< Updated upstream
-				//trying stuff
-				Cmd *command = new Cmd(token);
-				command->exec();
-=======
-				//Cmd *command = new Cmd(token);
-				//command->print();
->>>>>>> Stashed changes
-				//FIX ME: call && || and ; respectively when found
-				printf(" %s\n", token);
-				//int found = find(token, token + 2, '&');
-				//if (found) { cout << "found &&" << endl;}
-				token = strtok(NULL, d);
-				cout << *token << endl;
-			}
-		}
+		//if (user_input.find('#') != 0)
+	//	{
+//			user_input = user_input.substr(0, pos - 0);
+	//	}
 
-		else
-		{
+		if (user_input.compare(quit) == 0)
+		{ 
+			cout << "in exit statement" << endl;
 			exit(0);
 		}
+		
+	//	else 
+	//	{
+//			parse_args(user_input, cmd_arr);
+	//	}
 
-	//loop until user wants to exit
-	} while(user_input.compare(quit) != 0);
+	} while(run);
 	
 
 	return 0;

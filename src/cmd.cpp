@@ -17,8 +17,9 @@ void Cmd::exec()
 	//child	
 	if (pid == 0)
 	{
+	/*
 		//FIXME:: execvp parameter types dont match
-		if (const char* a, const char b              /*execvp(cmd[0], cmd) < 0*/) 
+		if (const char* a, const char b              //execvp(cmd[0], cmd) < 0*/ 
 		{
 			perror("*** ERROR: Failed when trying to execute command in child. \n");
 		}
