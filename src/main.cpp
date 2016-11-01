@@ -41,13 +41,8 @@ int main()
 			//loop until end of token
 			while (token != NULL) 
 			{
-<<<<<<< Updated upstream
-				//Cmd *command = new Cmd(token);
-				//command->print();
-=======
 				Cmd *command = new Cmd(token);
 				command->exec();
->>>>>>> Stashed changes
 				//FIX ME: call && || and ; respectively when found
 				printf(" %s\n", token);
 				//int found = find(token, token + 2, '&');
