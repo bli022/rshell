@@ -41,13 +41,14 @@ int main()
 			//loop until end of token
 			while (token != NULL) 
 			{
-				Cmd *command = new Cmd(token);
-				command->print();
+				//Cmd *command = new Cmd(token);
+				//command->print();
 				//FIX ME: call && || and ; respectively when found
 				printf(" %s\n", token);
 				//int found = find(token, token + 2, '&');
 				//if (found) { cout << "found &&" << endl;}
 				token = strtok(NULL, d);
+				cout << *token << endl;
 			}
 		}
 
