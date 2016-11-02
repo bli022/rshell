@@ -17,7 +17,7 @@ int And::exec()
 	// left sucessfully executed
 	// trying to execute right
 	else 
-	[
+	{
 		int status_rhs = this->right->exec();
 		if (status_rhs < 0) 
 		{
@@ -25,4 +25,5 @@ int And::exec()
 			return -1;
 		}
 	return 0;
+	}
 }
