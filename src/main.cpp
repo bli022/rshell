@@ -73,17 +73,41 @@ void parse_arg(string &allArg){
         cmds.push_back(temp);
         cmds.push_back(tempsymb);
     }
-    cmds.pop_back();
+   // cmds.pop_back();
     
     
     
     //populate my tree
-    for(int i = 0; !cmds.empty(); i++){
+   /* for(int i = 0; !cmds.empty(); i++){
         string curr = cmds.at(i);
         if( curr == ";" || curr == "||" || curr == "&&"){
             Connector *contr(
         }
-    }
+    }*/
+	
+	//convert strings to rshell classes
+	//return: rshell ptr
+	//parameter: vector<strings>
+	Rshell* populate(vector<string>, int cur_pos)
+		if (curr == ";") {
+		//left and right: check curpos -1 in the vector
+		//if cur_pos -1 is Command: call Command constructor
+		//else populate(vector<string>, cur_pos-1)
+			Semi *contr_semi(lhs, rhs);
+			node_vector.push_back(contr_semi);
+		}
+		else if (curr == "||") {
+			Or *contr_or();
+			node_vector.push_back(contr_or);
+		}
+		else if (curr == "&&") {
+			And *contr_and();
+			node_vector.push_back(contr_and);
+		}
+		else { //command
+			Command *cmd_node(curr.c_str());
+			node_vector.push_back(cmd_node);
+		}
     
 }
 
