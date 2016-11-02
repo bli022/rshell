@@ -9,11 +9,14 @@ int Or::exec()
 	if (status_lhs < 0)
 	{
 		perror("ERROR: failed to execute. \n");
+		return -1;
 	}
 
 	int status_rhs = right->exec();
 	if (status_rhs < 0) 
 	{
 		perror("ERROR: failed to execute. \n");
+		return -1;
 	}
+	return 0;
 }

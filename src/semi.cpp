@@ -10,6 +10,7 @@ int Semi::exec()
 	if (status_lhs < 0)
 	{
 		perror("ERROR: could not execute. \n");
+		return -1;
 	}
 
 	//error checking for right child
@@ -17,6 +18,7 @@ int Semi::exec()
 	if (status_rhs < 0)
 	{
 		perror("ERROR: could not execute. \n");
+		return -1;
 	}
 
 	return 0;
