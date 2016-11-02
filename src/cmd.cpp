@@ -27,23 +27,29 @@ void Cmd::parse(vector<char *> &token_vector)
 
 void Cmd::exec()
 {
-	
+		
 	//Parse single cmd
+	parse(the_command);
 
 	pid_t pid = fork();
-	int status;	
+	int status = 0;	
 	
 	
 	
 	//child	
 	if (pid == 0)
 	{
+		//do execvp
+		char **command = &the_command.at(0);
+		int exec_stat = execvp(the_command.at(0), command);
+
 	
 		//FIXME:: execvp parameter types dont match
-		if (const char* a, const char []            //execvp(cmd[0], cmd) < 0 
-		{
+		if ( /*check exec_stat*/ ) 
+		{ 
 			perror("*** ERROR: Failed when trying to execute command in child. \n");
 		}
+		
 	}
 
 
@@ -52,16 +58,7 @@ void Cmd::exec()
 	{
 		//wait
 		while (waitpid(pid, &status, 0) != pid) 
-		{
-			if (pid == 0) {
-				return;
-			}
-
-			else if (pid == -1) 
-			{
-				perror("*** ERRROR: Failed when trying to execute. \n");
-			}
-		}
+		{}
 	}
 
 	//fork() failed
