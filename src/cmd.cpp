@@ -8,11 +8,20 @@
 
 using namespace std;
 
+void Cmd::parse(){
+
+
+}
+
 void Cmd::exec()
 {
+	
+	//Parse single cmd
+
 	pid_t pid = fork();
 	int status;	
-
+	
+	
 	
 	//child	
 	if (pid == 0)

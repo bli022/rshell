@@ -16,6 +16,7 @@ class Cmd : public Rshell
 		{
 			cmd = a;
 		}
+		void parse();
 		void exec();
 };
 
