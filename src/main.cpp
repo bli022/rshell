@@ -47,17 +47,20 @@ void parse_arg(string &allArg){
     int find_semi = 0;
     int find_or = 0;
     int find_and = 0;
+   
+    //looking for connectors
     while(cmdline != ""){
         find_semi = cmdline.find(";");
         find_or = cmdline.find("||");
         find_and = cmdline.find("&&");
         
+	//if not found
         if(cmdline.find(";") == string::npos && cmdline.find("||") == string::npos && cmdline.find("&&") == string::npos){
             temp = cmdline;
             tempsymb = "";
             cmdline = "";
         }
-        else{
+        else{ //found connectors
             mini = min(find_semi,min(find_or,find_and));
             if(mini == find_or || mini == find_and){
                 temp = cmdline.substr(0,mini);
@@ -70,6 +73,7 @@ void parse_arg(string &allArg){
                 cmdline = cmdline.substr(mini+1);
             }
         }
+	//push connectors and commands into vector<string> cmds
         cmds.push_back(temp);
         cmds.push_back(tempsymb);
     }
@@ -92,10 +96,10 @@ void parse_arg(string &allArg){
 	//return: rshell ptr
 	//parameter: vector<strings>
 Rshell* populate(vector<string> node_vector, vector<Rshell*> theonethatleft,  int cur_pos) {
-    
+    // base case for recursive call
     if(node_vector.size() == 1){
-        char* aw; 
-        strcpy(aw, node_vector.at(0));
+        char* aw;
+        strcpy(aw, node_vector.at(0).c_str());
         int sizer = theonethatleft.size();
         for(int i = 2; i < sizer; i=i+2){
             theonethatleft.at(i)->left = theonethatleft.at(i-2);
@@ -109,72 +113,72 @@ Rshell* populate(vector<string> node_vector, vector<Rshell*> theonethatleft,  in
 	//left and right: check curpos -1 in the vector
 	//if cur_pos -1 is Command: call Command constructor
 	//else populate(vector<string>, cur_pos-1)
-        vector<char *> a;
-        char* aw; 
-        strcpy(aw, node_vector.at(cur_pos - 1).c_str());
-        a.push_back(aw);
-        Cmd* aa = new Cmd(a);
+        	vector<char *> a;
+        	char* aw; 
+        	strcpy(aw, node_vector.at(cur_pos - 1).c_str());
+       		a.push_back(aw);
+        	Cmd* aa = new Cmd(a);
         
-        vector<char *> b;
-        char* bw;
-        strcpy(bw, node_vector.at(cur_pos + 1).c_str());
-        b.push_back(bw);
-        Cmd* bb = new Cmd(b);
+       		vector<char *> b;
+       		char* bw;
+       		strcpy(bw, node_vector.at(cur_pos + 1).c_str());
+       		b.push_back(bw);
+        	Cmd* bb = new Cmd(b);
         
 		Semi* contr_semi = new Semi(aa, bb);
-        theonethatleft.push_back(contr_semi);
-        node_vector.erase(node_vector.begin()+cur_pos+1);
-        node_vector.erase(node_vector.begin()+cur_pos-1);
-        cur_pos--;
+        	theonethatleft.push_back(contr_semi);
+        	node_vector.erase(node_vector.begin()+cur_pos+1);
+        	node_vector.erase(node_vector.begin()+cur_pos-1);
+        	cur_pos--;
 	}
 	else if (node_vector.at(cur_pos)== "||") {
-        vector<char *> a;
-        char* aw; 
-        strcpy(aw, node_vector.at(cur_pos - 1).c_str());
-        a.push_back(aw);
-        Cmd* aa = new Cmd(a);
+        	vector<char *> a;
+        	char* aw; 
+        	strcpy(aw, node_vector.at(cur_pos - 1).c_str());
+        	a.push_back(aw);
+        	Cmd* aa = new Cmd(a);
         
-        vector<char *> b;
-        char* bw;
-        strcpy(bw, node_vector.at(cur_pos + 1).c_str());
-        b.push_back(bw);
-        Cmd* bb = new Cmd(b);
+        	vector<char *> b;
+        	char* bw;
+        	strcpy(bw, node_vector.at(cur_pos + 1).c_str());
+        	b.push_back(bw);
+        	Cmd* bb = new Cmd(b);
         
 		Or* contr_or = new Or(aa, bb);
-        theonethatleft.push_back(contr_or);
-        node_vector.erase(node_vector.begin()+cur_pos+1);
-        node_vector.erase(node_vector.begin()+cur_pos-1);
-        cur_pos--;
+        	theonethatleft.push_back(contr_or);
+        	node_vector.erase(node_vector.begin()+cur_pos+1);
+        	node_vector.erase(node_vector.begin()+cur_pos-1);
+        	cur_pos--;
 	}
 	else if (node_vector.at(cur_pos) == "&&") {
-        vector<char *> a;
-        char* aw; 
-        strcpy(aw, node_vector.at(cur_pos - 1).c_str());
-        a.push_back(aw);
-        Cmd* aa = new Cmd(a);
+        	vector<char *> a;
+        	char* aw; 
+        	strcpy(aw, node_vector.at(cur_pos - 1).c_str());
+        	a.push_back(aw);
+        	Cmd* aa = new Cmd(a);
         
-        vector<char *> b;
-        char* bw;
-        strcpy(bw, node_vector.at(cur_pos + 1).c_str());
-        b.push_back(bw);
-        Cmd* bb = new Cmd(b);
+        	vector<char *> b;
+        	char* bw;
+        	strcpy(bw, node_vector.at(cur_pos + 1).c_str());
+        	b.push_back(bw);
+        	Cmd* bb = new Cmd(b);
         
 		And* contr_and = new And(aa, bb);
-        theonethatleft.push_back(contr_and);
-        node_vector.erase(node_vector.begin()+cur_pos+1);
-        node_vector.erase(node_vector.begin()+cur_pos-1);
-        cur_pos--;
+        	theonethatleft.push_back(contr_and);
+        	node_vector.erase(node_vector.begin()+cur_pos+1);
+        	node_vector.erase(node_vector.begin()+cur_pos-1);
+        	cur_pos--;
 	}
 	else { //command
-        vector<char *> a;
-        char* aw; 
-        strcpy(aw, node_vector.at(cur_pos).c_str());
-        a.push_back(aw);
+        	vector<char *> a;
+        	char* aw; 
+        	strcpy(aw, node_vector.at(cur_pos).c_str());
+        	a.push_back(aw);
         
 		Cmd* cmd_node = new Cmd(a);
-        theonethatleft.push_back(cmd_node);
+        	theonethatleft.push_back(cmd_node);
 	}
-    populate(node_vector,theonethatleft, cur_pos+1);
+    	populate(node_vector,theonethatleft, cur_pos+1);
 }
 
 int main() 
