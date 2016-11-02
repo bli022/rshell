@@ -20,7 +20,7 @@ struct node{
     Rshell *value;
     Rshell *left;
     Rshell *right;
-}
+};
 
 
 void parse_arg(string &allArg){
@@ -74,7 +74,7 @@ void parse_arg(string &allArg){
         cmds.push_back(tempsymb);
     }
    // cmds.pop_back();
-    
+}    
     
     
     //populate my tree
@@ -88,27 +88,26 @@ void parse_arg(string &allArg){
 	//convert strings to rshell classes
 	//return: rshell ptr
 	//parameter: vector<strings>
-	Rshell* populate(vector<string>, int cur_pos)
-		if (curr == ";") {
-		//left and right: check curpos -1 in the vector
-		//if cur_pos -1 is Command: call Command constructor
-		//else populate(vector<string>, cur_pos-1)
-			Semi *contr_semi(lhs, rhs);
-			node_vector.push_back(contr_semi);
-		}
-		else if (curr == "||") {
-			Or *contr_or();
-			node_vector.push_back(contr_or);
-		}
-		else if (curr == "&&") {
-			And *contr_and();
-			node_vector.push_back(contr_and);
-		}
-		else { //command
-			Command *cmd_node(curr.c_str());
-			node_vector.push_back(cmd_node);
-		}
-    
+Rshell* populate(vector<string> node_vector, int cur_pos) {
+	if (node_vector.at(cur_pos) == ";") {
+	//left and right: check curpos -1 in the vector
+	//if cur_pos -1 is Command: call Command constructor
+	//else populate(vector<string>, cur_pos-1)
+		Semi *contr_semi(node_vector.at(cur_pos - 1), node_vector.at(cur_pos + 1));
+		node_vector.push_back(contr_semi);
+	}
+	else if (node_vector.at(cur_pos)== "||") {
+		Or *contr_or(node_vector.at(cur_pos - 1), node_vector.at(cur_pos + 1));
+		node_vector.push_back(contr_or);
+	}
+	else if (node_vector.at(cur_pos) == "&&") {
+		And *contr_and(node_vector.at(cur_pos - 1), node_vector.at(cur_pos + 1));
+		node_vector.push_back(contr_and);
+	}
+	else { //command
+		Cmd *cmd_node(node_vector.at(cur_pos).c_str());
+		node_vector.push_back(cmd_node);
+	}    
 }
 
 int main() 
