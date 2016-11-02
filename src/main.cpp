@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <sstream>
+#include <algorithm>
 
 #include "rshell.h"
 #include "and.h"
@@ -15,11 +16,17 @@
 
 using namespace std;
 
+struct node{
+    Rshell *value;
+    Rshell *left;
+    Rshell *right;
+}
 
-void parse_arg(string &allArg, char *args[]){
-    stringstream ss(allArg);
-    char par_arg[BUFSIZ];
-    while(ss >> par_arg){
+
+void parse_arg(string &allArg){
+    //stringstream ss(allArg);
+    //char par_arg[BUFSIZ];
+   /* while(ss >> par_arg){
        //FIXME parse by semi, and then or 
         char * cur_par = new char[BUFSIZ];
 
@@ -30,14 +37,61 @@ void parse_arg(string &allArg, char *args[]){
         cur_par[i] = '\0';
         *args++ = cur_par;
     }
-    *args = 0;
+    *args = 0; */
+    
+    vector<string> cmds;
+    string cmdline = allArg;
+    string temp = "";
+    string tempsymb = "";
+    int mini = 0;
+    int find_semi = 0;
+    int find_or = 0;
+    int find_and = 0;
+    while(cmdline != ""){
+        find_semi = cmdline.find(";");
+        find_or = cmdline.find("||");
+        find_and = cmdline.find("&&");
+        
+        if(cmdline.find(";") == string::npos && cmdline.find("||") == string::npos && cmdline.find("&&") == string::npos){
+            temp = cmdline;
+            tempsymb = "";
+            cmdline = "";
+        }
+        else{
+            mini = min(find_semi,min(find_or,find_and));
+            if(mini == find_or || mini == find_and){
+                temp = cmdline.substr(0,mini);
+                tempsymb = cmdline.substr(mini, mini+2);
+                cmdline = cmdline.substr(mini+2);
+            }
+            else{
+                temp = cmdline.substr(0,mini);
+                tempsymb = cmdline.substr(mini, mini+1);
+                cmdline = cmdline.substr(mini+1);
+            }
+        }
+        cmds.push_back(temp);
+        cmds.push_back(tempsymb);
+    }
+    cmds.pop_back();
+    
+    
+    
+    //populate my tree
+    for(int i = 0; !cmds.empty(); i++){
+        string curr = cmds.at(i);
+        if( curr == ";" || curr == "||" || curr == "&&"){
+            Connector *contr(
+        }
+    }
+    
 }
 
 int main() 
 {
 	string user_input;
 	string quit = "exit";
-	char *cmd_arr[64];
+	//char *cmd_arr[64];
 	bool run = true;
 	size_t  pos;
 
@@ -49,7 +103,8 @@ int main()
 		
 		if (user_input.find('#') != 0)
 		{
-			user_input = user_input.substr(0, pos - 0);
+            pos = user_input.find('#');
+			user_input = user_input.substr(0, pos+1);
 		}
 
 		if (user_input.compare(quit) == 0)
@@ -60,7 +115,7 @@ int main()
 		
 		else 
 		{
-			parse_args(user_input, cmd_arr);
+			parse_arg(user_input);
 		}
 
 	}
