@@ -20,7 +20,7 @@ class Cmd : public Rshell
 		{
 			the_command = a;
 		}
-		void exec();
+		int exec();
 };
 
 #endif

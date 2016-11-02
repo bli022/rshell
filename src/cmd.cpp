@@ -25,7 +25,7 @@ void Cmd::parse(vector<char *> &token_vector)
 	}
 }
 
-void Cmd::exec()
+int Cmd::exec()
 {
 		
 	//Parse single cmd
@@ -64,6 +64,9 @@ void Cmd::exec()
 	else 
 	{
 		perror("Error: Couldn't execute command because fork() failed. \n");
-		return;
+		return -1;
 	}
+
+return 0;
+
 }
