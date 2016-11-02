@@ -20,7 +20,7 @@ void parse_arg(string &allArg, char *args[]){
     stringstream ss(allArg);
     char par_arg[BUFSIZ];
     while(ss >> par_arg){
-       //parse by semi, and then or 
+       //FIXME parse by semi, and then or 
         char * cur_par = new char[BUFSIZ];
 
         unsigned i = 0;

@@ -9,7 +9,7 @@ class Rshell
 {
 	public:
 		Rshell() { }
-		virtual void exec() = 0;
+		virtual int exec() = 0;
 };
 
 #endif
