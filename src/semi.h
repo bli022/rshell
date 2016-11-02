@@ -2,19 +2,19 @@
 #define __SEMI_H__
 
 #include "semi.h"
-#include "rshell.h"
+#include "connector.h"
 
 using namespace std;
 
-class Semi : public Rshell
+class Semi : public Connector
 {
 	protected: 
 		Rshell *left;
 		Rshell *right;
 
 	public:
-		Semi() : Rshell() {}
-		Semi(Rshell *l, Rshell *r) : Rshell()
+		Semi() : Connector() {}
+		Semi(Rshell *l, Rshell *r) : Connector()
 		{
 			left = l;
 			right = r;

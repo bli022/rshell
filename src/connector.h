@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class connector : public Rshell
+class Cnnector : public Rshell
 {
 	protected:
         
