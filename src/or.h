@@ -2,11 +2,10 @@
 #define __OR_H__
 
 #include "connector.h"
-#include "or.h"
 
 using namespace std;
 
-class Or : public Connecter
+class Or : public Connector
 {
 	protected: 
 		Rshell *left;

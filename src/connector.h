@@ -5,18 +5,18 @@
 
 using namespace std;
 
-class Cnnector : public Rshell
+class Connector : public Rshell
 {
 	protected:
         
 	
 	public:
-		connector(): Rshell() { }
-		connector(char *a) : Rshell() 
+		Connector(): Rshell() { }
+		Connector(char *a) : Rshell() 
 		{
 			
 		}
-		void exec();
+		int exec();
 };
 
 #endif
