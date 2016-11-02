@@ -60,7 +60,7 @@ int main()
 		
 		else 
 		{
-			parse_args(user_input, cmd_arr);
+			parse_arg(user_input, cmd_arr);
 		}
 
 	}
