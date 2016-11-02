@@ -44,8 +44,7 @@ void Cmd::exec()
 		int exec_stat = execvp(the_command.at(0), command);
 
 	
-		//FIXME:: execvp parameter types dont match
-		if ( /*check exec_stat*/ ) 
+		if (exec_stat < 0) 
 		{ 
 			perror("*** ERROR: Failed when trying to execute command in child. \n");
 		}

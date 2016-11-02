@@ -1,6 +1,7 @@
 #ifndef __CMD_H__
 #define __CMD_H__
 
+#include <vector>
 #include "rshell.h"
 
 using namespace std;
@@ -11,13 +12,13 @@ class Cmd : public Rshell
 		void parse(vector<char *> &);
 
 	protected:
-		char* cmd;
+		vector<char *> the_command;
 	
 	public:
 		Cmd(): Rshell() { }
-		Cmd(char *a) : Rshell() 
+		Cmd(vector<char *> a) : Rshell() 
 		{
-			cmd = a;
+			the_command = a;
 		}
 		void exec();
 };

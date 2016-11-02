@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <string.h>
 #include <stdio.h>
+#include <sstream>
 
 #include "rshell.h"
 #include "and.h"
@@ -13,23 +14,13 @@
 
 
 using namespace std;
-/*
 
-void parse_arg(string &allArg, char * args[]){
+
+void parse_arg(string &allArg, char *args[]){
     stringstream ss(allArg);
     char par_arg[BUFSIZ];
     while(ss >> par_arg){
-        
-        if(par_arg[0] == '<')
-            iRedir = true;
-        if(par_arg[0] == '>')
-            oRedir = true;
-        if(par_arg[0] == '|')
-            ifPipe = true;
-        if(par_arg[0] == '&')
-            backgorund = true;
-            continue;
-        
+       //parse by semi, and then or 
         char * cur_par = new char[BUFSIZ];
 
         unsigned i = 0;
@@ -40,14 +31,13 @@ void parse_arg(string &allArg, char * args[]){
         *args++ = cur_par;
     }
     *args = 0;
-    
 }
-*/
+
 int main() 
 {
 	string user_input;
 	string quit = "exit";
-	char *cmd_arr[500];
+	char *cmd_arr[64];
 	bool run = true;
 	size_t  pos;
 
