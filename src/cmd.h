@@ -7,6 +7,9 @@ using namespace std;
 
 class Cmd : public Rshell
 {
+	private:
+		void parse(vector<char *> &);
+
 	protected:
 		char* cmd;
 	
@@ -16,7 +19,6 @@ class Cmd : public Rshell
 		{
 			cmd = a;
 		}
-		void parse();
 		void exec();
 };
 

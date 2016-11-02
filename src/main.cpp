@@ -47,9 +47,9 @@ int main()
 {
 	string user_input;
 	string quit = "exit";
-	//char *cmd_arr[500];
+	char *cmd_arr[500];
 	bool run = true;
-//	size_t  pos;
+	size_t  pos;
 
 	//keeps looping until user types in keyword: exit	
 	while (run)	
@@ -57,10 +57,10 @@ int main()
 		cout << "$ ";
 		getline(cin, user_input);
 		
-		//if (user_input.find('#') != 0)
-	//	{
-//			user_input = user_input.substr(0, pos - 0);
-	//	}
+		if (user_input.find('#') != 0)
+		{
+			user_input = user_input.substr(0, pos - 0);
+		}
 
 		if (user_input.compare(quit) == 0)
 		{ 
@@ -68,10 +68,10 @@ int main()
 			exit(0);
 		}
 		
-	//	else 
-	//	{
-//			parse_args(user_input, cmd_arr);
-	//	}
+		else 
+		{
+			parse_args(user_input, cmd_arr);
+		}
 
 	}
 	

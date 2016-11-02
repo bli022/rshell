@@ -3,14 +3,26 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/types.h>
+#include <vector>
+#include <cstring>
 
 #include "cmd.h"
 
 using namespace std;
 
-void Cmd::parse(){
-
-
+void Cmd::parse(vector<char *> &token_vector)
+{
+	int i = 0;
+	
+	//takes first command from vector<char *> to be parsed further
+	char *first = token_vector.at(0);
+	char *token = strtok(first, " ");
+	while (token != NULL) 
+	{
+		token_vector[i] = token;
+		i++;
+		token = strtok(NULL, " ");
+	}
 }
 
 void Cmd::exec()
@@ -26,9 +38,9 @@ void Cmd::exec()
 	//child	
 	if (pid == 0)
 	{
-	/*
+	
 		//FIXME:: execvp parameter types dont match
-		if (const char* a, const char b              //execvp(cmd[0], cmd) < 0*/ 
+		if (const char* a, const char []            //execvp(cmd[0], cmd) < 0 
 		{
 			perror("*** ERROR: Failed when trying to execute command in child. \n");
 		}
