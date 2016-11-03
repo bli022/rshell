@@ -6,7 +6,7 @@ SRC Branch
 |and.cpp   |				AND execution, hosts children
 |and.h     |			AND header
 |cmd.cpp   |				Execute program file, holds commands of shell
-	cmd.h				cmd header
+	cmd.h			cmd header
 	connector.cpp		Mother class of AND, OR, and SEMI
 	connector.h			connector header
 	main.cpp			Driver file
