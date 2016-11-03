@@ -1,7 +1,7 @@
 #ifndef __SEMI_H__
 #define __SEMI_H__
 
-#include "semi.h"
+#include "rshell.h"
 #include "connector.h"
 
 using namespace std;
@@ -11,13 +11,13 @@ class Semi : public Connector
 	protected: 
 		Rshell *left;
 		Rshell *right;
-		int semi_id = 1;		
 
 	public:
-		Semi() : Connector() {}
-		Semi(Rshell *l, Rshell *r, int semi_id) : Connector()
+		int symb;
+		Semi() : Connector() {symb = 1;}
+		Semi(Rshell *l, Rshell *r) : Connector()
 		{
-			this->semi_id = semi_id;
+			symb = 1;
 			left = l;
 			right = r;
 		}

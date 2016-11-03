@@ -2,21 +2,22 @@
 #define __OR_H__
 
 #include "connector.h"
+#include "rshell.h"
 
 using namespace std;
 
 class Or : public Connector
 {
 	protected:
-		int or_id = 3; 
 		Rshell *left;
 		Rshell *right;
 
 	public:
-		Or() : Connector() { }
-		Or(Rshell *l, Rshell *r, int or_id) : Connector()
+		int symb;
+		Or() : Connector() {/*symb = 3;*/ }
+		Or(Rshell *l, Rshell *r) : Connector()
 		{
-			this->or_id = or_id;
+			symb = 3;
 			left = l;
 			right = r;
 		}

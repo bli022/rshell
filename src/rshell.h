@@ -7,8 +7,10 @@ using namespace std;
 
 class Rshell
 {
+	protected:
 	public:
-		Rshell() { }
+		int symb;
+		Rshell() { };
 		virtual int exec() = 0;
 };
 

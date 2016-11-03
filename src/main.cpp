@@ -12,7 +12,7 @@
 #include "semi.h"
 #include "or.h"
 #include "cmd.h"
-
+#include "connector.h"
 
 using namespace std;
 
@@ -94,23 +94,27 @@ void parse_arg(string &allArg){
 Rshell* populate(vector<string> node_vector, vector<Rshell*> theonethatleft,  int cur_pos) {
     
     if(node_vector.size() == 1){
-        char* aw; 
-        strcpy(aw, node_vector.at(0));
+        //char* aw; 
+        //strcpy(aw, node_vector.at(0));
         int sizer = theonethatleft.size();
         for(int i = 2; i < sizer; i=i+2){
             if(theonethatleft.at(i)->symb == 1){
-                Semi contr_semi = new Semi(theonethatleft.at(i-2), theonethatleft.at(i-1));
-            }
-            else if(theonethtleft.at(i)->symb == 2){
-                And contr_and = new And(theonethatleft.at(i-2), theonethatleft.at(i-1));
-            }
+                Semi *contr_semi = new Semi(theonethatleft.at(i-2), theonethatleft.at(i-1));
+        	theonethatleft.push_back(contr_semi);
+	    }
+            else if(theonethatleft.at(i)->symb == 2){
+                And *contr_and = new And(theonethatleft.at(i-2), theonethatleft.at(i-1));
+            	theonethatleft.push_back(contr_and);
+	    }
             else if(theonethatleft.at(i)->symb == 3){
-                Or contr_or = new Or(theonethatleft.at(i-2), theonethatleft.at(i-1));
-            }
+                Or *contr_or = new Or(theonethatleft.at(i-2), theonethatleft.at(i-1));
+            	theonethatleft.push_back(contr_or);
+	    }
             theonethatleft.erase(theonethatleft.begin()+i-2);
             theonethatleft.erase(theonethatleft.begin()+i-1);
             sizer -= 2;
         }
+	return theonethatleft.at(0);
     }
 	else if (node_vector.at(cur_pos) == ";") {
 	//left and right: check curpos -1 in the vector
@@ -181,7 +185,8 @@ Rshell* populate(vector<string> node_vector, vector<Rshell*> theonethatleft,  in
 		Cmd* cmd_node = new Cmd(a);
         theonethatleft.push_back(cmd_node);
 	}
-    populate(node_vector,theonethatleft, cur_pos+1);
+   return  populate(node_vector,theonethatleft, cur_pos+1);
+
 }
 
 int main() 

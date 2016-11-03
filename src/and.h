@@ -10,13 +10,13 @@ class And : public Connector
 	protected: 
 		Rshell *left;
 		Rshell *right;
-		int and_id = 2; 
+		int symb; 
 		
 	public:
-		And() : Connector() {}
-		And(Rshell *l, Rshell *r, int and_id) : Connector()
+		And() : Connector() {/*symb = 2;*/}
+		And(Rshell *l, Rshell *r) : Connector()
 		{
-			this->and_id = and_id;
+			symb = 2;
 			left = l;
 			right = r;
 		}
