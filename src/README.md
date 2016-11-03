@@ -4,7 +4,7 @@ I. File list
 ------------
 
 |SRC Branch     | Description                                     |
-----------------|:-----------------------------------------------:|
+----------------|-------------------------------------------------|
 |and.cpp        |	AND execution, hosts children              			|
 |and.h          |	AND header                     			            |
 |cmd.cpp        |	Execute program file, holds commands of shell   |
