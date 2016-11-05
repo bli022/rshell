@@ -2,20 +2,22 @@ README
 
 I. File list
 ------------
-SRC Branch
-|and.cpp   |	AND execution, hosts children
-|and.h     |	AND header
-|cmd.cpp   |	Execute program file, holds commands of shell
-cmd.h				cmd header
-connector.cpp		Mother class of AND, OR, and SEMI
-connector.h			connector header
-main.cpp			Driver file
-	or.cpp				OR execution, hosts children
-	or.h				OR header
-	rshell.cpp			Abstract Base Class, virtual void exec()
-	rshell.h			rshell header
-	semi.cpp			SEMI-colon execution, hosts children
-	semi.h				SEMI header
+
+|SRC Branch     | Description                                     |
+----------------|-------------------------------------------------|
+|and.cpp        |	AND execution, hosts children              			|
+|and.h          |	AND header                     			            |
+|cmd.cpp        |	Execute program file, holds commands of shell   |
+|cmd.h		      |	cmd header					                            |
+|connector.cpp	|	Mother class of AND, OR, and SEMI		            |
+|connector.h	  |	connector header				                        |
+|main.cpp	      |	Driver file					                            |
+|or.cpp		      |	OR execution, hosts children			              |
+|or.h		        |	OR header					                              |
+|rshell.cpp	    |	Abstract Base Class, virtual void exec()	      |
+|rshell.h	      |	rshell header				                          	|
+|semi.cpp	      |	SEMI-colon execution, hosts children		        |
+|semi.h		      |	SEMI header					                            |  
 
 II. Design
 -----------
