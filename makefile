@@ -1,6 +1,6 @@
 #Compiler
-CC=g++
-CFLAGS= -Wall -Werror -ansi -pedantic
+CC=g++ 
+CFLAGS= -stdlib=libstdc++ -Wall -Werror -ansi -pedantic
 
 #Name of executable
 TARGET=./bin/rshell
@@ -17,7 +17,7 @@ OBJECTS=$(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(TARGET)
+	$(CC) $(SOURCES) -o $(TARGET)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	mkdir -p $(OBJDIR)
