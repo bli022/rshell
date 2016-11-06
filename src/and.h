@@ -3,17 +3,14 @@
 
 #include "connector.h"
 
-using namespace std;
-
 class And : public Connector 
 {
 	protected: 
 		Rshell *left;
-		Rshell *right;
-		int symb; 
+		Rshell *right; 
 		
 	public:
-		And() : Connector() {/*symb = 2;*/}
+		And() : Connector() {}
 		And(Rshell *l, Rshell *r) : Connector()
 		{
 			symb = 2;

@@ -4,8 +4,6 @@
 #include <vector>
 #include "rshell.h"
 
-using namespace std;
-
 class Cmd : public Rshell
 {
 	private:
@@ -15,9 +13,11 @@ class Cmd : public Rshell
 		vector<char *> the_command;
 	
 	public:
-		Cmd(): Rshell() { }
+		int symb;
+		Cmd(): Rshell() {symb = 0; }
 		Cmd(vector<char *> a) : Rshell() 
 		{
+			symb = 0;
 			the_command = a;
 		}
 		int exec();

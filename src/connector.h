@@ -3,14 +3,16 @@
 
 #include "rshell.h"
 
-using namespace std;
-
 class Connector : public Rshell
 {
+	protected:
 	public:
-       		int symb;
-		Connector(): Rshell() { }
-		int exec();
+		int symb;
+		Connector() : Rshell() 
+		{
+			symb = 0;
+		}
+		virtual int exec() = 0;
 };
 
 #endif

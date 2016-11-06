@@ -1,4 +1,3 @@
-#include <cstdio>
 #include "semi.h"
 
 using namespace std;

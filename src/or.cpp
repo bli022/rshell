@@ -1,4 +1,3 @@
-#include <cstdio>
 #include "or.h"
 
 int Or::exec()

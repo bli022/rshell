@@ -9,9 +9,10 @@ class Rshell
 {
 	protected:
 	public:
-		int symb;
-		Rshell() { };
+		Rshell() {symb = 0; };
 		virtual int exec() = 0;
+		int symb;
+
 };
 
 #endif
