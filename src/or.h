@@ -2,22 +2,18 @@
 #define __OR_H__
 
 #include "connector.h"
-#include "rshell.h"
-
-using namespace std;
 
 class Or : public Connector
 {
-	protected:
+	protected: 
 		Rshell *left;
 		Rshell *right;
 
 	public:
-		int symb;
-		Or() : Connector() {/*symb = 3;*/ }
+		Or() : Connector() { }
 		Or(Rshell *l, Rshell *r) : Connector()
 		{
-			symb = 3;
+			symb = 2;
 			left = l;
 			right = r;
 		}
