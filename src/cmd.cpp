@@ -1,9 +1,9 @@
 #include <iostream>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <stdio.h>
 #include <sys/types.h>
 #include <vector>
+#include <stdio.h>
 #include <cstring>
 
 #include "cmd.h"

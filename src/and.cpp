@@ -1,9 +1,8 @@
-#include <cstdio>
+#include <stdio.h>
+
 #include "and.h"
 #include "rshell.h"
 #include "cmd.h"
-
-using namespace std;
 
 int And::exec()
 {
