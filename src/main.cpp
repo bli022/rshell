@@ -79,6 +79,7 @@ void __parse_arg (string &cmdline, vector<string> cmds) {
 	//convert strings to rshell classes
 	//return: rshell ptr
 	//parameter: vector<strings>
+/*
 Rshell* populate(vector<string> node_vector, vector<Rshell*> theonethatleft,  int cur_pos) {
 
     if(node_vector.size() == 1){
@@ -172,10 +173,11 @@ Rshell* populate(vector<string> node_vector, vector<Rshell*> theonethatleft,  in
 	}
     return populate(node_vector,theonethatleft, cur_pos+1);   
 }
+*/
 
 
 
-void parse_arg(string &allArg){
+vector<string> parse_arg(string &allArg){
     vector<string> cmds;
     string cmdline = allArg;
     string temp = "";
@@ -216,7 +218,7 @@ void parse_arg(string &allArg){
     bob->exec();
    // cmds.pop_back();
     //change cmds into a vector of rshell *
-    
+    return cmds;
     
 }    
     
@@ -234,7 +236,10 @@ int main()
 	string user_input;
 	string quit = "exit";
 	//char *cmd_arr[64]r
+	stack<string> infix;
+	stack<string> tree;
 	size_t  pos;
+	vector<string> cmds;
 
 	//keeps looping until user types in keyword: exit	
 	while (true)	
@@ -255,9 +260,62 @@ int main()
 		
 		else 
 		{
-			parse_arg(user_input);
+			cmds = parse_arg(user_input);
 		}
+		
+		for (unsigned int i = 0; i < cmds.size(); ++i) 
+		{
+			if (cmds.at(i) != ";" || cmds.at(i) != "&&" || cmds.at(i) != "||") 
+			{
+				infix.push(cmds.at(i));
+			}
 
+			else 
+			{
+				if (infix.size() == 2) 
+				{
+					Cmd *leaf_left = new Cmd(infix.top());
+					infix.pop();
+					Cmd *leaf_left = new Cmd(infix.top());
+					infix.pop();
+					
+					//construct the type of connector and assign its children and push to tree stack
+					if (cmds.at(i) == ";") 
+					{
+						//instantiate semi
+						Semi *semi_connector = new Semi(cmds.at(i).c_str());
+						semi_connector->left = leaf_left;
+						semi_connector->right = leaf_right;
+					}
+					
+					else if (cmds.at(i) == "&&") 
+					{
+						//instantiate and
+						And *and_connector = new And(cmds.at(i).c_str());
+						and_connector = leaf_left;
+						and_connector = leaf_right;
+					}
+					
+					else
+					{
+						//instantiate or
+						Or *or_connector = new Or(cmds.at(i).c_str());
+
+
+
+					}
+
+				}
+				
+				else {
+					infix.push(cmds.at(i + 1));
+					tree.push(cmds.at(i));
+					tree.push(infix.top());
+					infix.pop();
+					tree.push(infix.top());
+					infix.pop();
+				}
+			}
 	}
 	
 
