@@ -275,32 +275,28 @@ int main()
 			{
 				if (infix.size() == 2) 
 				{
-					Cmd *leaf_left = new Cmd(infix.top());
+					Cmd *leaf_left = new Cmd(infix.top().c_str());
 					infix.pop();
-					Cmd *leaf_left = new Cmd(infix.top());
+					Cmd *leaf_right = new Cmd(infix.top().c_str());
 					infix.pop();
 					
 					//construct the type of connector and assign its children and push to tree stack
 					if (cmds.at(i) == ";") 
 					{
 						//instantiate semi
-						Semi *semi_connector = new Semi(cmds.at(i).c_str());
-						semi_connector->left = leaf_left;
-						semi_connector->right = leaf_right;
+						Semi *semi_connector = new Semi(leaf_left, leaf_right);
 					}
 					
 					else if (cmds.at(i) == "&&") 
 					{
 						//instantiate and
-						And *and_connector = new And(cmds.at(i).c_str());
-						and_connector = leaf_left;
-						and_connector = leaf_right;
+						And *and_connector = new And(leaf_left, leaf_right);
 					}
 					
 					else
 					{
 						//instantiate or
-						Or *or_connector = new Or(cmds.at(i).c_str());
+						Or *or_connector = new Or(leaf_left, leaf_right);
 
 
 

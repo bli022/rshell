@@ -29,7 +29,10 @@ int Cmd::exec()
 {
 		
 	//Parse single cmd
-	parse(the_command);
+	
+	vector<char *> single_command;
+	single_command.push_back(the_command);
+	parse(single_command);
 
 	pid_t pid = fork();
 	int status = 0;	
@@ -40,8 +43,8 @@ int Cmd::exec()
 	if (pid == 0)
 	{
 		//do execvp
-		char **command = &the_command.at(0);
-		int exec_stat = execvp(the_command.at(0), command);
+		char **command = &the_command[0];
+		int exec_stat = execvp(the_command[0], command);
 
 	
 		if (exec_stat < 0) 

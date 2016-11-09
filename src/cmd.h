@@ -11,11 +11,12 @@ class Cmd : public Rshell
 
 	protected:
 //		vector<char *> the_command;
-	
+		char *the_command;	
+
 	public:
 		int symb;
 		Cmd(): Rshell() {symb = 0; }
-		Cmd(vector<char *> a) : Rshell() 
+		Cmd(char *a) : Rshell() 
 		{
 			symb = 0;
 			the_command = a;
