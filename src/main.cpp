@@ -3,6 +3,7 @@
 #include <sstream>
 #include <cstring>
 #include <cstdlib>
+#include <stack>
 
 #include "rshell.h"
 #include "and.h"
@@ -182,13 +183,13 @@ vector<string> parse_arg(string &allArg){
     string cmdline = allArg;
     string temp = "";
     string tempsymb = "";
-    int find_semi = 0;
-    int find_or = 0;
-    int find_and = 0;
+  //  int find_semi = 0;
+  //  int find_or = 0;
+  //  int find_and = 0;
     while(cmdline != ""){
-        find_semi = cmdline.find(";");
-        find_or = cmdline.find("||");
-        find_and = cmdline.find("&&");
+//        find_semi = cmdline.find(";");
+//        find_or = cmdline.find("||");
+//        find_and = cmdline.find("&&");
         
 	cout << cmdline << endl;
         if(cmdline.find(";") == string::npos && cmdline.find("||") == string::npos && cmdline.find("&&") == string::npos){
@@ -213,9 +214,9 @@ vector<string> parse_arg(string &allArg){
 
         }
     }
-    vector<Rshell *> leaves;
-    Rshell * bob = populate(cmds, leaves, 0);
-    bob->exec();
+ //   vector<Rshell *> leaves;
+  //  Rshell * bob = populate(cmds, leaves, 0);
+  //  bob->exec();
    // cmds.pop_back();
     //change cmds into a vector of rshell *
     return cmds;

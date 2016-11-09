@@ -10,7 +10,7 @@ class Cmd : public Rshell
 		void parse(vector<char *> &);
 
 	protected:
-		vector<char *> the_command;
+//		vector<char *> the_command;
 	
 	public:
 		int symb;
